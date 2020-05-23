@@ -56,7 +56,7 @@ pipeline {
       }
 
       stage('Push Container') {
-         
+         steps {
          echo "$WORKSPACE"
          dir("$WORKSPACE/azure-vote") {
             script {
@@ -73,6 +73,7 @@ pipeline {
 
 
             }
+         }
          }
 
       }
