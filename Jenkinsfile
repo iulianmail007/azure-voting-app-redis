@@ -1,22 +1,23 @@
 pipeline {
-   agent {label 'LABELL'}
+   agent any
 
    stages {
-      stage('Verify Branch') {
+      stage('Help') {
          steps {
-            echo env.BRANCH_NAME
+        powershell label: '', script: 'Write-Output "Hellp!!!"' 
          }
       }
+
+      stage('Help') {
+         steps {
+            echo "${GIT_BRANCH}" 
+         }
+      }
+      "${GIT_BRANCH}"
       stage('Docker Build') {
          steps {
             pwsh(script: 'docker images -a')
-            pwsh(script: """
-               cd azure-vote/
-               docker images -a
-               docker build -t jenkins-pipeline .
-               docker images -a
-               cd ..
-            """)
+
          }
       }
    }
