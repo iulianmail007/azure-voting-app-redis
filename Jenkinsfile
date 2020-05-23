@@ -8,7 +8,7 @@ pipeline {
          }
       }
 
-      stage('Help') {
+      stage('Branch') {
          steps {
             echo "${GIT_BRANCH}" 
          }
