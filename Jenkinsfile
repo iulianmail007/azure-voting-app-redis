@@ -55,6 +55,28 @@ pipeline {
          }
       }
 
+      stage('Push Container') {
+         
+         echo "$WORKSPACE
+         dir("$WORKSPACE/azure-vote") {
+            script {
+               
+               docker.withRegistry('https://index.docker.io/v1/', 'DockerHub-id') {
+
+               def customImage = docker.build('blackdentech/jenkins-course:latest')
+
+               /* Push the container to the custom Registry */
+               customImage.push()
+
+               }     
+
+
+
+            }
+         }
+
+      }
+
 
 
    }
