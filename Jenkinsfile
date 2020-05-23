@@ -61,9 +61,10 @@ pipeline {
          dir("$WORKSPACE/azure-vote") {
             script {
                
+               docker login -u DockerHub-id -p "$(cat jsonkey.json)" 'https://index.docker.io/v1/'
                docker.withRegistry('https://index.docker.io/v1/', 'DockerHub-id') {
 
-               def customImage = docker.build('blackdentech/jenkins-course:latest')
+               def customImage = docker.build('iulianmail007/jenkins-course:latest')
 
                /* Push the container to the custom Registry */
                customImage.push()
