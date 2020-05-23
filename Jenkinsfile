@@ -57,7 +57,7 @@ pipeline {
 
       stage('Push Container') {
          
-         echo "$WORKSPACE
+         echo "$WORKSPACE"
          dir("$WORKSPACE/azure-vote") {
             script {
                
