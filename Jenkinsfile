@@ -14,12 +14,23 @@ pipeline {
          }
       }
       
-      stage('Docker Build') {
+      stage('Docker Info') {
          steps {
             powershell label: '', script: 'docker images -a'
 
          }
       }
+      
+       stage('Docker Build') {
+         steps {
+            powershell label: '', script: '''cd azure-vote/
+               docker images -a
+               docker build -t jenkins-pipeline .
+               docker images -a
+               cd ..'''
+         }
+      }
+      
    }
         
 }
